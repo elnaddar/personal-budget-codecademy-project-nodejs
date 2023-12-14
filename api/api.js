@@ -1,0 +1,9 @@
+const express = require("express");
+const apiRouter = express.Router();
+
+module.exports = apiRouter;
+
+apiRouter.get("/", (req, res, next)=>{
+    console.log("Hello World");
+    res.send();
+})
