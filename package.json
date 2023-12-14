@@ -1,0 +1,25 @@
+{
+  "name": "personal-budget-codecademy-project-nodejs",
+  "version": "1.0.0",
+  "description": "Personal Budget codecademy project from back-end engineer course.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --watch index.js --watch api/"
+  },
+  "keywords": [
+    "express",
+    "back-end",
+    "budget",
+    "api"
+  ],
+  "author": "Ahmed Mahdy",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.2"
+  }
+}
