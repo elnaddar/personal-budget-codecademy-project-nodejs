@@ -21,6 +21,12 @@ app.use(bodyParser.json());
 const apiRouter = require("./api/api");
 app.use("/", apiRouter);
 
+/* error handle middleware */
+app.use((err, req, res, next)=>{
+    const status = err.status || 500;
+    res.status(status).send(err.message);
+  });
+
 /* start the server listening at PORT */
 app.listen(PORT, ()=>{
     console.log("Running server on port: "+PORT);
