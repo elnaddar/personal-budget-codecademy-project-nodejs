@@ -26,3 +26,14 @@ envelopes.get("/:enveId", (req, res, next) => {
         next(err);
     }
 });
+
+envelopes.put("/:enveId", (req, res, next) => {
+    const id = req.params.enveId;
+    try {
+        const obj = db.updateEnvelopeById(id, req.body.title, req.body.budget);
+        res.status(202).send(obj);
+    } catch (err) {
+        next(err);
+    }
+});
+
