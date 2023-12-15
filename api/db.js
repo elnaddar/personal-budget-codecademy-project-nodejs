@@ -64,4 +64,17 @@ const updateEnvelopeById = (id, title = null, budget = null) => {
         throw err;
     }
 }
-module.exports = { Envelope, isValidEnvelope, addEnvelope, getAllEnvelopes, getEnvelopeById, updateEnvelopeById };
+
+const deleteEnvelope = id => {
+    const idx = getIdxEnvelopeById(id);
+    try {
+        const elm = envelopes[idx];
+        envelopes.splice(idx, 1);
+        return elm;
+    } catch (error) {
+        const err = new Error(`server got error, ${error}.`);
+        err.status = 500;
+        throw err;
+    }
+}
+module.exports = { Envelope, isValidEnvelope, addEnvelope, getAllEnvelopes, getEnvelopeById, updateEnvelopeById, deleteEnvelope };
