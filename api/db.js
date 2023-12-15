@@ -77,4 +77,18 @@ const deleteEnvelope = id => {
         throw err;
     }
 }
-module.exports = { Envelope, isValidEnvelope, addEnvelope, getAllEnvelopes, getEnvelopeById, updateEnvelopeById, deleteEnvelope };
+
+const transferBudget = (from, to, amount) => {
+    const fromIdx = getIdxEnvelopeById(from);
+    const toIdx = getIdxEnvelopeById(to);
+    if (envelopes[fromIdx].budget >= amount) {
+        envelopes[fromIdx].budget -= amount;
+        envelopes[toIdx].budget += amount;
+    } else {
+        const err = new Error(`Envelope with id ${from} has only ${envelopes[fromIdx].budget} which is less than ${amount} you try to transfere.`);
+        err.status = 400;
+        throw err;
+    }
+}
+
+module.exports = { Envelope, isValidEnvelope, addEnvelope, getAllEnvelopes, getEnvelopeById, updateEnvelopeById, deleteEnvelope, transferBudget };
