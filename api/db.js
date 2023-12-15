@@ -23,4 +23,6 @@ const addEnvelope = obj =>{
     }
 }
 
-module.exports = {Envelope, isValidEnvelope, addEnvelope};
+const getAllEnvelopes = ()=> envelopes;
+
+module.exports = {Envelope, isValidEnvelope, addEnvelope, getAllEnvelopes};
