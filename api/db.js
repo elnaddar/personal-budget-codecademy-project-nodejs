@@ -47,11 +47,16 @@ const getIdxEnvelopeById = id => {
     }
 };
 
+const validateAddBudget = (newBudget, oldBudget) => {
+    if (newBudget != null && newBudget != undefined) return Number(newBudget);
+    else return oldBudget;
+}
+
 const updateEnvelopeById = (id, title = null, budget = null) => {
-    if (title || budget) {
+    if (title || budget != null) {
         const idx = getIdxEnvelopeById(id);
         envelopes[idx].title = title || envelopes[idx].title;
-        envelopes[idx].budget = budget || envelopes[idx].budget;
+        envelopes[idx].budget = validateAddBudget(budget, envelopes[idx].budget);
         return envelopes[idx];
     } else {
         const err = new Error(`Can't change value when title and budget are null.`);
