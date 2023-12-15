@@ -25,3 +25,8 @@ overspend their budget!
 - Express
 - Git and GitHub
 - Postman
+
+## Future Work:
+
+- Create a frontend that displays envelopes and balances, and allows users to update each envelop balance
+- Add an API endpoint allowing user to add a single balance that’s distributed to multiple envelopes
