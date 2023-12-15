@@ -9,20 +9,31 @@ const Envelope = (id, title, budget) => {
 let envelopes = []
 
 const isValidEnvelope = obj => obj.hasOwnProperty('id') &&
-                                 obj.hasOwnProperty('title') &&
-                                 obj.hasOwnProperty('budget');
+    obj.hasOwnProperty('title') &&
+    obj.hasOwnProperty('budget');
 
-const addEnvelope = obj =>{
-    if(isValidEnvelope(obj)){
+const addEnvelope = obj => {
+    if (isValidEnvelope(obj)) {
         envelopes.push(Envelope(obj.id, obj.title, obj.budget));
         return obj;
-    } else{
+    } else {
         const err = new Error("Invalid evelope");
         err.status = 400;
         throw err;
     }
 }
 
-const getAllEnvelopes = ()=> envelopes;
+const getAllEnvelopes = () => envelopes;
 
-module.exports = {Envelope, isValidEnvelope, addEnvelope, getAllEnvelopes};
+const getEnvelopeById = id => {
+    const enve = envelopes.find(obj => obj.id == id);
+    if (enve) {
+        return enve;
+    } else {
+        const err = new Error(`Evnvelope with id: ${id} not found`);
+        err.status = 400;
+        throw err;
+    }
+};
+
+module.exports = { Envelope, isValidEnvelope, addEnvelope, getAllEnvelopes, getEnvelopeById };
