@@ -16,3 +16,13 @@ envelopes.post("/", (req, res, next) => {
         next(err);
     }
 });
+
+envelopes.get("/:enveId", (req, res, next) => {
+    const id = req.params.enveId;
+    try {
+        const obj = db.getEnvelopeById(id);
+        res.send(obj);
+    } catch (err) {
+        next(err);
+    }
+});
