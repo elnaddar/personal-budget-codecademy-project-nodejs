@@ -17,7 +17,7 @@ const addEnvelope = obj => {
         envelopes.push(Envelope(obj.id, obj.title, obj.budget));
         return obj;
     } else {
-        const err = new Error("Invalid evelope");
+        const err = new Error(`Invalid evelope ${obj}`);
         err.status = 400;
         throw err;
     }
