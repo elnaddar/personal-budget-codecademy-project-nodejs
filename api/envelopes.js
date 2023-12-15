@@ -47,3 +47,12 @@ envelopes.delete("/:enveId", (req, res, next) => {
         next(err);
     }
 });
+
+envelopes.post("/transfer", (req, res, next) => {
+    try {
+        db.transferBudget(req.body.from, req.body.to, req.body.amount);
+        res.sendStatus(201);
+    } catch (err) {
+        next(err);
+    }
+});
