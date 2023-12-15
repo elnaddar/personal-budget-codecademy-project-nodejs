@@ -37,3 +37,13 @@ envelopes.put("/:enveId", (req, res, next) => {
     }
 });
 
+
+envelopes.delete("/:enveId", (req, res, next) => {
+    const id = req.params.enveId;
+    try {
+        const obj = db.deleteEnvelope(id);
+        res.status(202).send(obj);
+    } catch (err) {
+        next(err);
+    }
+});
