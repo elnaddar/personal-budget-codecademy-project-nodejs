@@ -4,6 +4,10 @@ const envelopes = express.Router();
 
 module.exports = envelopes;
 
+envelopes.get("/", (req, res, next) => {
+    res.send(db.getAllEnvelopes());
+})
+
 envelopes.post("/", (req, res, next) => {
     try {
         const obj = db.addEnvelope(req.body);
